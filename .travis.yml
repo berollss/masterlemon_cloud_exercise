@@ -1,4 +1,9 @@
+sudo: required
 services:
   - docker
 script:
   - docker build - t lab-app-cloud .
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker tag lab-app-cloud $DOCKER_USER/lab-app-cloud
+  - docker push $DOCKER_USER/lab-app-cloud
