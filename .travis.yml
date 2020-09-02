@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 script:
-  - docker build - t lab_cloud .
+  - docker build -t lab_cloud
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker tag lab_cloud $DOCKER_USER/masterlemon_cloud_exercise
